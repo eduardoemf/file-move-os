@@ -1,6 +1,6 @@
 # BackupManager
 
-`BackupManager` é uma classe Python que realiza backups de diretórios, registrando logs do processo.
+`BackupManager` é uma classe Python que realiza backups de diretórios, registrando logs do processo e excluindo backups antigos conforme um período de retenção especificado.
 
 ## Instalação
 
@@ -15,23 +15,25 @@ from backup_manager import BackupManager
 
 source_dir = '/caminho/do/diretorio/de/origem'
 backup_base_dir = '/caminho/do/diretorio/de/backup'
+retention_days = 10
 
-backup_manager = BackupManager(source_dir, backup_base_dir)
+backup_manager = BackupManager(source_dir, backup_base_dir, retention_days)
 ```
 
 ## Métodos
 **__init__**(self, source_dir, backup_base_dir)
 Inicializa a classe com os diretórios de origem e destino do backup.
 
-    **Args:**
+    Args:
     source_dir (str): O caminho do diretório de origem.
     backup_base_dir (str): O caminho do diretório base onde o backup será armazenado.
     setup_logging(self) -> Configura o logging para o script. Cria logs tanto em um arquivo backup_log.txt quanto no console.
+    retention_days (int): O número de dias para manter os backups.
 
 **create_backup_directory**(self, backup_dir_name)
 Cria o diretório base do backup se não existir.
 
-    **Args:**
+    Args:
     backup_dir_name (str): O nome do diretório de backup.
     Returns:
     str: O caminho completo do diretório de backup.
