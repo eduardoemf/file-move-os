@@ -1,43 +1,43 @@
-## File Mover OS
+# BackupManager
 
-**Description:**
-File Mover OS is a Python-based tool designed to efficiently move files within an operating system. This project aims to simplify file management tasks by providing a user-friendly and automated way to organize, relocate, and handle files.
+`BackupManager` é uma classe Python que realiza backups de diretórios, registrando logs do processo.
 
-**Features:**
-- Easy-to-use interface for moving files
-- Support for various file types and directories
-- Automated file sorting and organization
-- Cross-platform compatibility (Windows, macOS, Linux)
+## Instalação
 
-**Installation:**
-To install the necessary dependencies, run:
-```bash
-pip install -r requirements.txt
+Para utilizar este script, você precisa ter Python instalado na sua máquina. Além disso, as bibliotecas `os`, `shutil`, `datetime` e `logging` são necessárias. Todas essas bibliotecas são padrões no Python.
+
+## Uso
+
+### Inicialização
+
+```python
+from backup_manager import BackupManager
+
+source_dir = '/caminho/do/diretorio/de/origem'
+backup_base_dir = '/caminho/do/diretorio/de/backup'
+
+backup_manager = BackupManager(source_dir, backup_base_dir)
 ```
 
----
+## Métodos
+**__init__**(self, source_dir, backup_base_dir)
+Inicializa a classe com os diretórios de origem e destino do backup.
 
-**Descrição**
-Movimentador de Arquivos OS é uma ferramenta baseada em Python projetada para mover arquivos de forma eficiente dentro de um sistema operacional. Este projeto visa simplificar tarefas de gerenciamento de arquivos, fornecendo uma maneira amigável e automatizada de organizar, relocar e manipular arquivos.
+    **Args:**
+    source_dir (str): O caminho do diretório de origem.
+    backup_base_dir (str): O caminho do diretório base onde o backup será armazenado.
+    setup_logging(self) -> Configura o logging para o script. Cria logs tanto em um arquivo backup_log.txt quanto no console.
 
-**Recursos:**
-* Interface fácil de usar para mover arquivos
-* Suporte para vários tipos de arquivos e diretórios
-* Classificação e organização automatizadas de arquivos
-* Compatibilidade multiplataforma (Windows, macOS, Linux)
+**create_backup_directory**(self, backup_dir_name)
+Cria o diretório base do backup se não existir.
 
-**Instalação**
-Para instalar as dependências necessárias, execute:
-```bash
-pip install -r requirements.txt
-```
-**Uso**
-```bash
-python file_mover.py
-```
+    **Args:**
+    backup_dir_name (str): O nome do diretório de backup.
+    Returns:
+    str: O caminho completo do diretório de backup.
+    backup_directory(self)
+    Faz o backup de um diretório, adicionando a data ao nome do diretório de backup.
 
-**Contribuições**
-Aceitamos contribuições! Por favor, faça um fork do repositório e envie pull requests.
+**run_backup(self)**
 
-**Licença**
-Este projeto está licenciado sob a Licença MIT.
+    Executa todos os métodos necessários para realizar o backup em sequência.
